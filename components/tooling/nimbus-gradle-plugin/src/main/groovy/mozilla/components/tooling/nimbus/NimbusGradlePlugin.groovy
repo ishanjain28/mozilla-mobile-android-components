@@ -360,8 +360,9 @@ class NimbusPlugin implements Plugin<Project> {
                 commandLine "cargo"
                 args "run", "--"
             }
-            args "generate"
-            args "--language", "kotlin"
+
+            args inputFile
+            args "intermediate-repr"
             args "--channel", channel
             if (cacheDir != null)
                 args "--cache-dir", cacheDir
@@ -369,8 +370,8 @@ class NimbusPlugin implements Plugin<Project> {
                 args "--repo-file", file
             }
 
-            args inputFile
-            args outputDir
+            // Probably not the correct path??
+            args "-o", outputDir+"/.experimenter.json"
 
             println args
         }
