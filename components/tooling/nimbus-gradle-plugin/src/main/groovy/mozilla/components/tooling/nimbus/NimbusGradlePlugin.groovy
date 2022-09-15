@@ -428,15 +428,14 @@ class NimbusPlugin implements Plugin<Project> {
                 commandLine "cargo"
                 args "run", "--"
             }
-            args "generate-experimenter"
+            args inputFile
+            args "experimenter"
             if (cacheDir != null)
                 args "--cache-dir", cacheDir
             for (String file : repoFiles) {
                 args "--repo-file", file
             }
-
-            args inputFile
-            args experimenterFile
+            args "-o", experimenterFile
         }
     }
 
